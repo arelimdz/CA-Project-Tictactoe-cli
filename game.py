@@ -1,3 +1,5 @@
+from pprint import pprint
+
 # Define board size
 # TODO: Load from settings file
 num_rows = 3
@@ -14,10 +16,19 @@ def get_valid_position():
     if 1 <= int(number) <= (num_rows * num_columns):
         return int(number)
 
-# Get board index
+
+
+markers = ["X", "O"]
 position = get_valid_position()
 
+
+# Get board index
 r = row_index = (position - 1) // num_columns
 c = column_index = (position - 1) % num_columns
 
-print(r, c)
+if board[r][c] is None:
+    board[r][c] = markers
+else:
+    print("Sorry spot taken. TRY AGAIN!")
+
+pprint (board)
