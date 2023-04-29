@@ -17,15 +17,16 @@ def get_valid_position():
             number = input("player input: ")
             if 1 <= int(number) <= (num_rows * num_columns):
                 return int(number)
+
         except ValueError:
             pass
 
 
-markers = ["X"]
+markers = ["X", "O"]
+current_marker_index = 0
 
 # Game Loop 
 while True:
-
     
     position = get_valid_position()
     # Get board index
@@ -33,7 +34,9 @@ while True:
     c = column_index = (position - 1) % num_columns
 
     if board[r][c] is None:
-        board[r][c] = markers
+        board[r][c] = markers[current_marker_index]
+        # Switch player
+        current_marker_index = (current_marker_index + 1) % len(markers)
         pprint (board)
     else:
         print("Sorry spot taken. TRY AGAIN!")
