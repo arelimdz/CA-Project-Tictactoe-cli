@@ -4,7 +4,6 @@ def format_board(board) -> str:
     result = ""
     num_columns = len(board[0])
     len_of_max_position = len(str(num_columns * len(board)))
-    print(len_of_max_position)
     for row_index, row in enumerate(board):
         row_to_print = []
         for column_index, column in enumerate(row):
