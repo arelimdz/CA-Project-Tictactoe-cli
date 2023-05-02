@@ -18,3 +18,5 @@ def is_valid_user_input(board, user_input):
     except ValueError:
         if user_input.isalpha():
             return None, f"Not a number"
+        elif user_input == "":
+            return None, f"Ops! You din't enter a move!"

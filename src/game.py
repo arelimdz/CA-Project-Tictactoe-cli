@@ -1,9 +1,9 @@
 from pprint import pprint
-from win_checker import is_winning_move
 from is_valid_user_input import is_valid_user_input
 from format_board import format_board
 from build_board import build_board
 from has_board_space import has_space
+from win_checker import has_player_won
 
 
 # TODO: Load from settings file
@@ -16,7 +16,7 @@ def main_game_loop(num_rows, num_columns, target):
     board_size = num_columns * num_rows
     # Create board
     board = build_board(num_rows, num_columns)
-    print(board)
+    # print(board)
 
     #  Get input from player and verify if valid
     def get_valid_position(board):
@@ -32,23 +32,10 @@ def main_game_loop(num_rows, num_columns, target):
     markers = ["X", "O"]
     current_marker_index = 0
 
-    # Set values for check winner
-    horizontal_offsets = (0, -1), (0, 1)
-    vertical_offsets = (-1, 0), (1, 0)
-    forward_diagonal_offsets = (1, -1), (-1, 1)  # / diagonal
-    backward_diagonal_offsets = (-1, -1), (1, 1)  # \ diagonal
-
-    all_offsets = [
-        horizontal_offsets,
-        vertical_offsets,
-        forward_diagonal_offsets,
-        backward_diagonal_offsets,
-    ]
-
     # Call formated board
     board_string = format_board(board)
 
-    # is game over
+    # Set loop for game while there is not winner
     is_game_over = False
     while not is_game_over:
         formatted_board = format_board(board)
@@ -63,22 +50,13 @@ def main_game_loop(num_rows, num_columns, target):
         move = (r, c)
 
         # Check for a winner
-        for offsets in all_offsets:
-            left_offset, right_offset = offsets
-            if is_winning_move(
-                board,
-                move,
-                current_marker,
-                target,
-                left_offset,
-                right_offset,
-            ):
-                print(f"WINNER {markers[current_marker_index]}")
-                print(format_board(board))
-                is_game_over = True
-                break
+        if has_player_won(board, move, current_marker, target):
+            print(f"WINNER {markers[current_marker_index]}")
+            print(format_board(board))
+            is_game_over = True
+            break
 
-        # Check if board has more empty spaces
+        # Check if board has any empty space
         if not has_space(board):
             print("GAME OVER!!! Nobody wins!")
             break
