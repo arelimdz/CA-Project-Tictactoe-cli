@@ -1,10 +1,12 @@
 from pprint import pprint
 from win_checker import is_winning_move
+from is_valid_user_input import is_valid_user_input
+from format_board import format_board
 
 # Define board size
 # TODO: Load from settings file
-num_rows = 2
-num_columns = 2
+num_rows = 20
+num_columns = 20
 target = 2
 
 
@@ -24,24 +26,12 @@ def main_game_loop(num_rows, num_columns, target):
     #  Get input from player and verify if valid
     def get_valid_position(board):
         while True:
-            try:
-                number = input("Please, enter your move: ")
-                position = int(number)
-                if 1 <= int(number) <= (num_rows * num_columns):
-                    r = row_index = (position - 1) // num_columns
-                    c = column_index = (position - 1) % num_columns
-
-                    if board[r][c] is not None:
-                        print("Oh Oh! Spot taken!")
-                        continue
-
-                    return r, c
-                else:
-                    print(f"Please, enter a number between 1 and {board_size}: ")
-
-            except ValueError:
-                if number.isalpha():
-                    print(f"That is not a number! Please, enter only numbers: ")
+            position = input("Please, enter your move: ")
+            valid_position, error = is_valid_user_input(board, position)
+            if error:
+                print(error)
+            elif valid_position is not None:
+                return valid_position
 
     markers = ["X", "O"]
     current_marker_index = 0
@@ -60,25 +50,14 @@ def main_game_loop(num_rows, num_columns, target):
         backward_diagonal_offsets,
     ]
 
-    def print_board(board):
-        board_position = 0
-        rows_to_print = []
-        for row_index, row in enumerate(board):
-            row_to_print = []
-            for column_index, column in enumerate(row):
-                board_position += 1
-                value = board[row_index][column_index]
-                if value is None:
-                    row_to_print += str(board_position)
-                else:
-                    row_to_print += value
-            rows_to_print.append("  " + "  |  ".join(row_to_print) + "\n")
-        print()
-        print("-----+-----+-----\n".join(rows_to_print))
+    board_string = format_board(board)
+    print(board_string)
+
 
     is_game_over = False
     while not is_game_over:
-        print_board(board)
+        formatted_board = format_board(board)
+        print(formatted_board)
         r, c = get_valid_position(board)
 
         current_marker = markers[current_marker_index]
@@ -117,4 +96,4 @@ def main_game_loop(num_rows, num_columns, target):
         current_marker_index = (current_marker_index + 1) % len(markers)
 
 
-main_game_loop(3, 3, 3)
+main_game_loop(num_rows, num_columns, target)
