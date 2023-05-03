@@ -4,19 +4,12 @@ from format_board import format_board
 from build_board import build_board
 from has_board_space import has_space
 from win_checker import has_player_won
-
-
-# TODO: Load from settings file
-num_rows = 3
-num_columns = 3
-target = 3
+from game_settings import clear_terminal
 
 
 def main_game_loop(num_rows, num_columns, target):
-    board_size = num_columns * num_rows
     # Create board
     board = build_board(num_rows, num_columns)
-    # print(board)
 
     #  Get input from player and verify if valid
     def get_valid_position(board):
@@ -51,8 +44,9 @@ def main_game_loop(num_rows, num_columns, target):
 
         # Check for a winner
         if has_player_won(board, move, current_marker, target):
-            print(f"WINNER {markers[current_marker_index]}")
+            clear_terminal()
             print(format_board(board))
+            print(f"WINNER {markers[current_marker_index]}")
             is_game_over = True
             break
 
@@ -62,6 +56,4 @@ def main_game_loop(num_rows, num_columns, target):
             break
 
         current_marker_index = (current_marker_index + 1) % len(markers)
-
-
-main_game_loop(num_rows, num_columns, target)
+        clear_terminal()

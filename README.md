@@ -10,3 +10,24 @@
 # For coverage
 
 4. `python -m pytest --cov=src tests/`
+
+# For Mocking test
+`pip install pytest-mock`
+
+
+### PRG1002-5.1: UTILISES a library by including an appropriate import statement in the code.
+###### Correctly imports FOUR OR MORE Python packages into the code
+
+
+### PRG1002-5.2: UTILISES functions from an imported library
+##### Makes **extensive** use of functions from one or more Python packages
+
+
+### PRG1002-3.2: UTILISES standard input and output in a simple program
+##### Uses input and output in TWO OR MORE SOPHISTICATED ways in an application, demonstrating DEEP AND NUANCED UNDERSTANDING of input and output in Python.
+
+
+#### CMP1041-4.4: UTILISES operating system or IDE features which facilitate the execution of the application.
+##### Writes multiple highly sophisticated scripts which facilitate the execution of the application.
+
+

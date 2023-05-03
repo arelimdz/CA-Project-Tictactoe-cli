@@ -9,7 +9,7 @@ def is_valid_user_input(board, user_input):
             c = column_index = (position - 1) % num_columns
 
             if board[r][c] is not None:
-                return None, "Position occupied"
+                return None, "Oh No! Position occupied"
 
             return (r, c), None
         else:
@@ -17,6 +17,6 @@ def is_valid_user_input(board, user_input):
 
     except ValueError:
         if user_input.isalpha():
-            return None, f"Not a number"
+            return None, f"Hey! That is not a number!"
         elif user_input == "":
             return None, f"Ops! You din't enter a move!"

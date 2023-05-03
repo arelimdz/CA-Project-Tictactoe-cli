@@ -14,7 +14,7 @@ def test_when_user_input_is_not_a_number():
 
     # Assert
     assert position is None
-    assert error == "Not a number"
+    assert error == "Hey! That is not a number!"
 
 
 def test_when_user_input_is_number_not_in_range():
@@ -41,4 +41,30 @@ def test_when_user_input_refers_to_an_occupied_position():
 
     # Assert
     assert position is None
-    assert error == "Position occupied"
+    assert error == "Oh No! Position occupied"
+
+
+def test_when_user_input_refers_to_available_position():
+    # Arrange
+    board = build_board(3, 3)
+    user_input = "3"
+
+    # Act
+    position, error = is_valid_user_input(board, user_input)
+
+    # Assert
+    assert position == (0, 2)
+    assert error == None
+
+
+def test_when_user_input_is_nothing():
+    # Arrange
+    board = build_board(3, 3)
+    user_input = ""
+
+    # Act
+    position, error = is_valid_user_input(board, user_input)
+
+    # Assert
+    assert position == None
+    assert error == "Ops! You din't enter a move!"
