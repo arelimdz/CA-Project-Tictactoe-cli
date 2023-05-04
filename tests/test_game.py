@@ -59,7 +59,11 @@ def test_state_of_game():
 .....+.....+.....
   X  |  8  |  9
 
-WINNER X"""
+Congratulations Player 1!!!
+
+You are the WINNER
+
+"""
 
     inputs = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     with mock.patch("builtins.input", side_effect=inputs) as mocked_input:

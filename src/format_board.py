@@ -1,3 +1,6 @@
+import os
+
+
 def format_board(board) -> str:
     board_position = 0
     rows_to_print = []
@@ -18,3 +21,8 @@ def format_board(board) -> str:
     space = (("+" + ("." * (len_of_max_position + 4))) * num_columns)[1:]
     result += f"{space}\n".join(rows_to_print)
     return result
+
+
+def clear_terminal():
+    input("Press enter to continue")
+    os.system("cls" if os.name == "nt" else "clear")
