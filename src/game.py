@@ -63,3 +63,5 @@ def main_game_loop(num_rows, num_columns, target, player_1, player_2):
 
         current_marker_index = (current_marker_index + 1) % len(markers)
         clear_terminal()
+
+

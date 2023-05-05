@@ -24,5 +24,5 @@ def format_board(board) -> str:
 
 
 def clear_terminal():
-    input("Press enter to continue")
+    input("< Press ENTER to continue >")
     os.system("cls" if os.name == "nt" else "clear")

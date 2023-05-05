@@ -1,8 +1,13 @@
 from enum import Enum, auto
 from print_game_settings_screen import format_game_settings_screen
-from save_value_to_file import load_settings, save_settings
+from save_value_to_file import (
+    load_settings,
+    save_settings,
+    read_file,
+    SETTINGS_FILE_PATH,
+)
 from format_board import clear_terminal
-from views import main_menu_view, game_title
+from views import main_menu_view, game_title, game_menu_view
 from game import main_game_loop
 from game_setting import (
     set_rows,
@@ -53,17 +58,28 @@ def handle_main_menu_options():
 
 def handle_gameplay():
     # DO MAIN GAME LOOP
-    
-    main_game_loop(num_rows, num_columns, target, player_1, player_2)
-    print("Wanna play again? ")
+    file_settings = read_file(SETTINGS_FILE_PATH)
+    rows = int(file_settings[0])
+    columns = int(file_settings[1])
+    target = int(file_settings[2])
+    player_1 = file_settings[3]
+    player_2 = file_settings[4]
+    main_game_loop(rows, columns, target, player_1, player_2)
+    clear_terminal()
 
-    repit_loop = input("Wanna play again? :")
+    while True:
+        user_input = game_menu_view()
+        if user_input == 1:
+            main_game_loop(rows, columns, target, player_1, player_2)
+            clear_terminal()
+        else:
+            clear_terminal()
+            return Screens.MAIN_MENU
 
     return Screens.MAIN_MENU
 
 
 def handle_settings_options():
-    clear_terminal()
     settings = load_settings(SETTINGS_FILE)
     print(format_game_settings_screen(settings))
     option = int(input("Enter numbered option: "))
