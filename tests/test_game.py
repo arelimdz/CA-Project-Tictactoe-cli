@@ -59,16 +59,16 @@ def test_state_of_game():
 .....+.....+.....
   X  |  8  |  9
 
-Congratulations Player 1!!!
+
+Congratulations Rick!!! 
 
 You are the WINNER
-
 """
 
     inputs = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     with mock.patch("builtins.input", side_effect=inputs) as mocked_input:
         with mock.patch("builtins.print") as mocked_print:
-            result = main_game_loop(3, 3, 3)
+            result = main_game_loop(3, 3, 3, "Rick", "Morty")
 
         all_print_output = []
         for call_args in mocked_print.call_args_list:
@@ -76,4 +76,6 @@ You are the WINNER
             all_print_output.append(" ".join(list(map(str, args))))
         output = "\n".join(all_print_output)
 
+    print(expected_output)
+    print(output)
     assert expected_output == output

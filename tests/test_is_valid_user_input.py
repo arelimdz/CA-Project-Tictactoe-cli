@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from is_valid_user_input import is_valid_user_input
 from build_board import build_board
 
@@ -14,7 +12,7 @@ def test_when_user_input_is_not_a_number():
 
     # Assert
     assert position is None
-    assert error == "Hey! That is not a number!"
+    assert error == "Hey! That is not a recognisable number!"
 
 
 def test_when_user_input_is_number_not_in_range():
@@ -67,4 +65,4 @@ def test_when_user_input_is_nothing():
 
     # Assert
     assert position == None
-    assert error == "Ops! You din't enter a move!"
+    assert error == "Oops! You did not enter a move!"
