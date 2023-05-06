@@ -1,22 +1,19 @@
-def main_menu_view():
+def main_menu_view() -> str:
     result = """
 ====================== Main Menu ===================
 
-                       Play Now!
-                      [ Press 1 ]
+[ 1 ] Play Now!
 
-                    Personalize Game
-                      [ Press 2 ]
+[ 2 ] Personalize Game
 
-                       Exit Game 
-                      [ Press 3 ]
+[ 3 ] Exit Game 
 
 ====================================================
     """
     return result
 
 
-def game_title():
+def game_title() -> str:
     # Used an ascii art generator: https://patorjk.com/software/taag
     game_title = """
 ████████╗██╗ ██████╗              ████████╗ █████╗  ██████╗
@@ -42,23 +39,6 @@ def game_title():
                                                                        
                   By Areli Mendoza Perez                         
 
+                < Press ENTER to continue >
 """
     return game_title
-
-
-def game_menu_view():
-    play_again = input(
-        """
-====================== Wanna play again? ===================
-
-                            YES 
-                        [ Press 1 ]
-                           
-                            NO 
-                        [ Press 0 ]
-
-===========================================================
-
-Enter numbered option: """
-    )
-    return int(play_again)

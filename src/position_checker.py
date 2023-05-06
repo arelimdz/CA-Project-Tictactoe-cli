@@ -1,5 +1,5 @@
 # Check if a position is mark by the player in turn ("X" or "O")
-def is_marked(board, position, player_mark):
+def is_marked(board, position, player_mark) -> bool:
     return board[position[0]][position[1]] == player_mark
 
 
@@ -9,7 +9,7 @@ def is_valid_pointer(
     pointer_column,
     row_limit,
     column_limit,
-):
+) -> bool:
     return (
         pointer_row >= 0
         and pointer_row <= row_limit
@@ -19,7 +19,9 @@ def is_valid_pointer(
 
 
 #  Check if the player's move is the winner by checking positions around it
-def is_winning_move(board, move, mark, target, pointer_1_offset, pointer_2_offset):
+def is_winning_move(
+    board, move, mark, target, pointer_1_offset, pointer_2_offset
+) -> bool:
     turns = ["pointer1", "pointer2"]
     row_limit = len(board) - 1
     column_limit = len(board[0]) - 1

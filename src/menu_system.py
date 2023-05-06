@@ -1,24 +1,19 @@
 from enum import Enum, auto
+from format_board import clear_terminal
+from views import main_menu_view, game_title
+from game import main_game_loop
 from print_game_settings_screen import format_game_settings_screen
-from save_value_to_file import (
+from settings_file_io import (
     load_settings,
     save_settings,
-    read_file,
     SETTINGS_FILE_PATH,
 )
-from format_board import clear_terminal
-from views import main_menu_view, game_title, game_menu_view
-from game import main_game_loop
 from game_setting import (
-    set_rows,
-    set_columns,
-    set_target,
     update_name_player_1,
     update_name_player_2,
+    get_valid_integer,
+    update_board,
 )
-
-
-SETTINGS_FILE = "./data/game_settings.txt"
 
 
 class Screens(Enum):
@@ -29,7 +24,6 @@ class Screens(Enum):
 
 class MainMenuScreenOptions(Enum):
     PLAY_GAME = "PLAY_GAME"
-    VIEW_CREDITS = "VIEW_CREDITS"
     VIEW_SETTINGS = "VIEW_SETTINGS"
     EXIT_APP = "EXIT_APP"
 
@@ -43,7 +37,7 @@ class SettingsScreenOptions(Enum):
 
 def handle_main_menu_options():
     print(main_menu_view())
-    option = int(input("Enter numbered option:"))
+    option = get_valid_integer("Enter numbered option", 1, 3)
     if option == 1:
         return Screens.GAMEPLAY
 
@@ -57,56 +51,56 @@ def handle_main_menu_options():
 
 
 def handle_gameplay():
-    # DO MAIN GAME LOOP
-    file_settings = read_file(SETTINGS_FILE_PATH)
-    rows = int(file_settings[0])
-    columns = int(file_settings[1])
-    target = int(file_settings[2])
-    player_1 = file_settings[3]
-    player_2 = file_settings[4]
-    main_game_loop(rows, columns, target, player_1, player_2)
-    clear_terminal()
+    file_settings = load_settings(SETTINGS_FILE_PATH)
+    rows = int(file_settings["num_rows"])
+    columns = int(file_settings["num_columns"])
+    target = int(file_settings["win_target"])
+    player_1 = file_settings["player_name_1"]
+    player_2 = file_settings["player_name_2"]
+    result = main_game_loop(rows, columns, target, player_1, player_2)
+    if result is None:
+        return None
 
     while True:
-        user_input = game_menu_view()
-        if user_input == 1:
-            main_game_loop(rows, columns, target, player_1, player_2)
-            clear_terminal()
-        else:
-            clear_terminal()
+        play_again = input("Do you want to Play Again? (Y/N): ").strip()
+        if play_again and play_again.upper() == "Y":
+            result = main_game_loop(rows, columns, target, player_1, player_2)
+            if result is None:
+                return None
+        elif play_again and play_again.upper() == "N":
             return Screens.MAIN_MENU
+        print("Enter Y for Yes or N for No")
 
     return Screens.MAIN_MENU
 
 
 def handle_settings_options():
-    settings = load_settings(SETTINGS_FILE)
+    settings = load_settings(SETTINGS_FILE_PATH)
     print(format_game_settings_screen(settings))
-    option = int(input("Enter numbered option: "))
-    settings = load_settings(SETTINGS_FILE)
+    option = get_valid_integer("Enter numbered option", 1, 4)
+    settings = load_settings(SETTINGS_FILE_PATH)
 
     if option == 1:
-        rows = set_rows()
-        columns = set_columns()
-        target = set_target(rows, columns)
+        new_settings = update_board()
+        rows, columns, target = new_settings
         settings["num_rows"] = rows
         settings["num_columns"] = columns
         settings["win_target"] = target
-        save_settings(SETTINGS_FILE, settings)
+        save_settings(SETTINGS_FILE_PATH, settings)
         clear_terminal()
         return Screens.SETTINGS
 
     if option == 2:
         player_1_name = update_name_player_1()
         settings["player_name_1"] = player_1_name
-        save_settings(SETTINGS_FILE, settings)
+        save_settings(SETTINGS_FILE_PATH, settings)
         clear_terminal()
         return Screens.SETTINGS
 
     if option == 3:
         player_2_name = update_name_player_2()
         settings["player_name_2"] = player_2_name
-        save_settings(SETTINGS_FILE, settings)
+        save_settings(SETTINGS_FILE_PATH, settings)
         clear_terminal()
         return Screens.SETTINGS
 
@@ -126,11 +120,10 @@ screen_handlers = {
 
 def start_menu_system():
     print(game_title())
-    clear_terminal()
+    input("")
+
     current_screen = Screens.MAIN_MENU
     while current_screen:
+        clear_terminal()
         handle_screen = screen_handlers[current_screen]
         current_screen = handle_screen()
-
-
-start_menu_system()

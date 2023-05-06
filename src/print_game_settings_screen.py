@@ -7,7 +7,7 @@ game_settings = {
 }
 
 
-def format_game_settings_screen(game_settings):
+def format_game_settings_screen(game_settings) -> str:
     num_rows = game_settings["num_rows"]
     num_columns = game_settings["num_columns"]
     winning_line_length = game_settings["win_target"]
@@ -16,15 +16,18 @@ def format_game_settings_screen(game_settings):
     result = f"""
 
 
-=== Game Settings ===
+====================== Game Settings ======================
 
-1. Update Board Size (currently {num_rows}x{num_columns}) and Line Length (currently {winning_line_length})
+[ 1 ] Update Board Size ({num_rows}x{num_columns}) and Line Length ({winning_line_length})
+                        
+[ 2 ] Update Player 1 Name ({player_1_name})
+                        
+[ 3 ] Update Player 2 Name ({player_2_name})
 
-2. Update Player 1 Name (currently '{player_1_name}')
+[ 4 ] Exit to Main Menu
 
-3. Update Player 2 Name (currently '{player_2_name}')
 
-4. Exit to Main Menu
+==========================================================
 
 """
     return result.lstrip()

@@ -1,5 +1,6 @@
 from menu_system import start_menu_system
 
+
 def main():
     start_menu_system()
 
