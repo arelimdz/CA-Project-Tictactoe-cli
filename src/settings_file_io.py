@@ -7,8 +7,8 @@ DEFAULT_SETTINGS = {
     "num_rows": 3,
     "num_columns": 3,
     "win_target": 3,
-    "player_name_1": "Player 1",
-    "player_name_2": "Player 2",
+    "player_name_1": "Rick",
+    "player_name_2": "Morty",
 }
 
 
@@ -25,6 +25,16 @@ def load_settings(file_path):
                     and str(settings["player_name_1"]) == str(settings["player_name_1"])
                     and str(settings["player_name_2"]) == str(settings["player_name_2"])
                 ):
+                    num_rows = settings["num_rows"]
+                    num_columns = settings["num_columns"]
+
+                    if not (
+                        2 <= num_rows <= 20
+                        and 2 <= num_columns <= 20
+                        and settings["win_target"] <= max(num_rows, num_columns)
+                    ):
+                        raise Exception("Invalid board configuration")
+
                     return settings
         except Exception:
             pass
