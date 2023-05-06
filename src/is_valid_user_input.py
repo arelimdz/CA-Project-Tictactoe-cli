@@ -18,7 +18,7 @@ def is_valid_user_input(board, user_input) -> int and str:
 
     except ValueError:
         if user_input == "":
-            error_message = f"Oops! You didn't enter a move!"
+            error_message = f"Oops! You did not enter a move!"
         else:
             error_message = f"Hey! That is not a recognisable number!"
 
