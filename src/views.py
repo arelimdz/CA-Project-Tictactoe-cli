@@ -6,7 +6,7 @@ def main_menu_view() -> str:
 
 [ 2 ] Personalize Game
 
-[ 3 ] Exit Game 
+[ 3 ] Exit Application
 
 ====================================================
     """

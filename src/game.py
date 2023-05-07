@@ -42,9 +42,9 @@ def main_game_loop(num_rows, num_columns, target, player_1, player_2) -> str:
         if position is None:
             print(
                 f"\n(╯°□°)╯︵ ┻━┻ \n\n"
-                f"{players[current_marker_index]} rage-quit and ruined the game for everyone!\n"
+                f"\n{players[current_marker_index]} rage-quit and ruined the game for everyone!\n"
             )
-            return None  # board was flipped, exit the application
+            return "TABLE_FLIPPED"  # table was flipped, exit the application
 
         r, c = position
 

@@ -58,17 +58,19 @@ def handle_gameplay():
     player_1 = file_settings["player_name_1"]
     player_2 = file_settings["player_name_2"]
     result = main_game_loop(rows, columns, target, player_1, player_2)
-    if result is None:
+    if result == "TABLE_FLIPPED":
         return None
 
     while True:
         play_again = input("Do you want to Play Again? (Y/N): ").strip()
         if play_again and play_again.upper() == "Y":
             result = main_game_loop(rows, columns, target, player_1, player_2)
-            if result is None:
+            if result == "TABLE_FLIPPED":
                 return None
+
         elif play_again and play_again.upper() == "N":
             return Screens.MAIN_MENU
+
         print("Enter Y for Yes or N for No")
 
     return Screens.MAIN_MENU

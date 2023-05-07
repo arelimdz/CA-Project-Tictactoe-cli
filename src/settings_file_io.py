@@ -2,7 +2,7 @@ import json
 import os
 
 
-SETTINGS_FILE_PATH = "./data/game_settings.txt"
+SETTINGS_FILE_PATH = "./game_settings.json"
 DEFAULT_SETTINGS = {
     "num_rows": 3,
     "num_columns": 3,

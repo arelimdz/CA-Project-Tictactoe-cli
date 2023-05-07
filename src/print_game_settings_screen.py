@@ -18,7 +18,7 @@ def format_game_settings_screen(game_settings) -> str:
 
 ====================== Game Settings ======================
 
-[ 1 ] Update Board Size ({num_rows}x{num_columns}) and Line Length ({winning_line_length})
+[ 1 ] Update Board Size ({num_rows}x{num_columns}) and Winning Line Length ({winning_line_length})
                         
 [ 2 ] Update Player 1 Name ({player_1_name})
                         
