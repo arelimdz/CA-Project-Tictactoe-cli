@@ -22,19 +22,6 @@ class Screens(Enum):
     SETTINGS = "SETTINGS"
 
 
-class MainMenuScreenOptions(Enum):
-    PLAY_GAME = "PLAY_GAME"
-    VIEW_SETTINGS = "VIEW_SETTINGS"
-    EXIT_APP = "EXIT_APP"
-
-
-class SettingsScreenOptions(Enum):
-    UPDATE_BOARD_SIZE = "UPDATE_BOARD_SIZE"
-    UPDATE_PLAYER_NAME_1 = "UPDATE_PLAYER_NAME_1"
-    UPDATE_PLAYER_NAME_2 = "UPDATE_PLAYER_NAME_2"
-    GO_TO_MAIN_MENU = "GO_TO_MAIN_MENU"
-
-
 def handle_main_menu_options():
     print(main_menu_view())
     option = get_valid_integer("Enter numbered option", 1, 3)
