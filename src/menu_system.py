@@ -62,7 +62,7 @@ def handle_gameplay():
         return None
 
     while True:
-        play_again = input("Do you want to Play Again? (Y/N): ").strip()
+        play_again = input("\nDo you want to Play Again? (Y/N): ").strip()
         if play_again and play_again.upper() == "Y":
             result = main_game_loop(rows, columns, target, player_1, player_2)
             if result == "TABLE_FLIPPED":

@@ -89,7 +89,7 @@ For this I used a function (main_game_loop) with a while loop that continuously 
 
 To keep my code DRY I have embedded in this main loop functions so that the application addresses one player each cycle.
 
-The game will always start with "Player 1" marked "X", and then "Player 2" marked "O". The game will move to the next cycle only once the player in turn enters a valid position.
+The game will always start with the player 1 marked "X", and then player 2 marked "O". The game will move to the next cycle only once the player in turn enters a valid position.
 
 When the game ends, the application prompts the user for interaction and asks if they would like to play again.
 
@@ -99,10 +99,9 @@ This application is designed to be scalable. This means that users can create ve
 
 ### - Personalised gameplay experience with configured player names
 
+The application allows the user to personalize the game with their player name. This configuration is done only once and is recorded on the hard disk of the computer. So every time the player starts a new game, the application refers to the user by name.
 
-
-So the gameplay experience feels more personalised
-
+However, if the player decides not to make any changes, the game will still be able to differentiate the users, using the default values: "Rick" for player 1 and "Morty" for player 2.
 
 ### - Checking for winner
 
@@ -125,22 +124,142 @@ To do this, the application uses 4 main functions that are linked together to pe
    It is at this point where the coordinates are pass to the is_winning_move function so that the pointers move towards the indicated directions: horizontally (left and right), vertical (up and down) and forward diagonal "/" (left-down and right-up) diagonal backwards "\"(left-up and right-down)
    To return True or False and find out if there is a winner
 
-
 ### - Simple to use menu system
 
-So that players can do all of the above in a user-friendly manner
+A menu system has been integrated into this application to facilitate its use.
+
+It is user friendly and prints an options menu each time the user moves to different parts of the application.
+As shown in the following graph:
+
+![Menu Views Graph](./readme_img/menu_views.png)
 
 ### - Load and save game settings to file between application sessions
 
-So that players don't have to re-configure the game each session.
+This functionality of the application allows to save the changes made by the user in the hard disk of the machine where the application is located.
+
+The first time the user enters the game, it will use the game's default values that are saved in a json file.
+
+This json file is updated every time the user changes the values of the board, the length of the goal to win, and/or the names of the players from the Game Settings section.
+
+If for some reason this file is deleted the application will create a new file with the default values.
+
+If for any reason the user tries to change the values of the application from the json file, and these are outside the established limits (a board with a maximum size of 20x20 grids, or a goal length to win larger than the size rows or columns) the application will ignore the values in the file and use the default values.
+
+The default values are the following:
+
+```json
+{
+  "num_rows": 4,
+  "num_columns": 4,
+  "win_target": 4,
+  "player_name_1": "Rick",
+  "player_name_2": "Morty"
+}
+```
 
 ### - Table flipping
 
-So that players can act anti-social and flip the table on their turn (╯°□°)╯︵ ┻━┻
+Virtual games shouldn't be that different from physical board games, which is why I've included this feature so that players can act antisocial or express their frustration just by flipping the game table during their turn.
 
-### User Interaction and Experience
+(╯°□°)╯︵ ┻━┻
 
-Screen shooots of the game
+This in turn is a fun way to stop the app in the middle of the game if any of the users want it to for some other reason.
+
+## User Interaction and Experience
+
+This is an example of how the user can interact with the application from the terminal.
+
+My terminal game has been designed to be user friendly, on each screen it gives easy instructions to the user to navigate the application.
+The first screen that receives the user is the game cover as shown below:
+
+![Game title](./readme_img/game_cover.png)
+
+- Application Main Menu
+
+The second screen that the user will see is the main menu of the game. From this menu the user can go directly to play the game or visit the settings menu and customize the game.
+For this example, we will visit the settings menu to make some changes, we enter option 2 and hit enter.
+
+![Main Menu](./readme_img/main_menu.png)
+
+- Game Settings Menu
+
+This screen gives the user a menu of options depending on what they want to change.
+The menu shows the current values of each section that can be customized.
+
+For this example let's extend our board. We introduce option 1 and hit enter.
+
+![Game Settings Menu](./readme_img/game%20settings.png)
+
+- Applying changes
+
+The app will give you step by step instructions to modify the size of the board and set the size of the target win line, as shown in the following image.
+
+![Applying changes to game](./readme_img/change_game_settings.png)
+
+- Updating game settings values and return main menu
+
+Once we give the last value and hit enter, the screen in the terminal will be cleared and the settings menu will be updated with the values provided, as shown in the following image.
+
+Now we are ready to play! To return to the main menu, we exit the configuration menu by simply entering option 4 and pressing enter
+
+![Updating Game Settings](./readme_img/updated_game_settings.png)
+
+- Play Game
+
+To start the game the user has to go to the main menu and from there enter option 1 and hit enter.
+
+![Play Game](./readme_img/return_main_menu.png)
+
+- Game Display
+
+Once the user has started the game, an empty 5x5 grid board with 25 available positions will be displayed.
+
+The program will give specific instructions to the user to enter the position to be marked, once the player enters the desired position and presses enter the game will mark the position for the user.
+
+![Game display](./readme_img/start_playgame.png)
+
+- Invalid input handaling
+
+The application is capable of handling invalid inputs by the player and prints different messages depending on each situation.
+
+An entry may be invalid for the following reasons:
+
+- Input is a non numeric character
+- Input is a number out of board range
+- No input
+- Input is occupying position on the board
+
+The application will not continue the game until the player in turn enters a valid position, as shown in the following image.
+
+![Game display](./readme_img/catch_invalid_inputs.png)
+
+- Check if there is a winner
+
+Like the classic tictactoe game, the player who first makes a continuous line with his mark ("X"/ "O") on the board wins. This continuous line can be vertical, horizontal, forward diagonal or backward diagonal.
+
+As shown in the following images:
+
+- Rick wins vertically
+
+![Vertial win](./readme_img/vertical_win.png)
+
+- Rick wins horizontally
+
+![Horizontal win](./readme_img/horizontal_win.png)
+
+- Rick wins with a forward diagonal line
+
+![Forward diagonal](./readme_img/forward_diagonal_win.png)
+
+- Rick wins with a backward diagonal
+
+![Backward diagonal](./readme_img/backward_diagonal_win.png)
+
+- No winners
+
+If the available positions run out the application ends the game, as shown below
+
+![Nobody wins](./readme_img/nobody_wins.png)
 
 ## Software Development Plan
 
@@ -162,6 +281,15 @@ Provide screenshots/images and/or a reference to an accessible project managemen
 > Your checklists for each feature should have at least 5 items.
 
 ## Testing (R15)
+
+
+
+
+
+
+
+
+
 
 ### How to run automated tests
 

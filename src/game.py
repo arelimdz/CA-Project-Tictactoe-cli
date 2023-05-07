@@ -68,7 +68,7 @@ def main_game_loop(num_rows, num_columns, target, player_1, player_2) -> str:
 
         # Check if board has any empty space
         if not has_space(board):
-            print("\nGAME OVER!!! Nobody wins!")
+            print("\nGAME OVER!!! Nobody wins!\n")
             break
 
         current_marker_index = (current_marker_index + 1) % len(markers)
