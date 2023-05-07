@@ -1,6 +1,6 @@
 # TIC-TAC-TO-INFINITY
 
-A terminal Aplicaction of the clasic Tic-Tac-Toe game with a great twist.
+A terminal Application of the classic Tic-Tac-Toe game with a great twist.
 
 Created by Areli Mendoza Perez for a Project with Coder Academy.
 
@@ -16,9 +16,9 @@ This code is formatter by Black and the resulting code style is compliant with P
 
 ### System Requirements
 
-To run this application user need to have Python 3 on their computer.
+To run this application the user needs to have Python 3 installed on their computer.
 
-To check if user have python installed, use the following command:
+To check if python 3 is installed, use the following command:
 
 ```sh
 python3 --version
@@ -42,13 +42,13 @@ To install the latest version of Python 3 visit the following page:
 
 ### How to install application (R8)
 
-To run this application in your computer follow the next steps:
+To run the application on the user's computer follow the next steps:
 
-1. Open your terminal or Git Bash.
+1. Open the terminal or Git Bash.
 
 1. Navigate to the directory where you want to store the application.
 
-1. In your terminal, run the following command :
+1. In the terminal, run the following commands:
 
 ```sh
 $ git clone git@github.com:arelimdz/tictactoe-cli.git
@@ -74,8 +74,10 @@ $ ./run_game.sh
 
 ## Description of application
 
-Tic-Tac-Infinity is the classic Tic-Tac-Toe game with two unique additions: Extensible and customizable.
-Users can resize the game board to their desired size, set their own winning line length size, and set player names.
+Tic-Tac-Infinity is the classic Tic-Tac-Toe game with two unique additions:
+
+1. Extensible: Users can resize the game board to their desired size, set their own winning line length size
+2. Personalisable: Users can set player names.
 
 It continues to maintain the essence of the classic game that we all know. It requires two people to be played. It consists of alternately each one of the players makes a move in one of the available grids, trying to be the first to mark three consecutive grids with their mark.
 
@@ -85,7 +87,7 @@ It continues to maintain the essence of the classic game that we all know. It re
 
 To make tic-tac-to-infinity a more enjoyable game, I designed it as a multiplayer (2 players) game.
 
-For this I used a function (main_game_loop) with a while loop that continuously iterates until either a winner is identified or the board out of empty spaces.
+For this I used a function `main_game_loop()` with a while loop that continuously iterates until either a winner is identified or the board out of empty spaces.
 
 To keep my code DRY I have embedded in this main loop functions so that the application addresses one player each cycle.
 
@@ -95,11 +97,11 @@ When the game ends, the application prompts the user for interaction and asks if
 
 ### - Scalable Tic Tac Toe board size and winning line length size
 
-This application is designed to be scalable. This means that users can create very large boards with this application (I manually test a board with a 1000x1000 grid). Such a big board requires a gigantic screen to be displayed correctly. So, thinking about the users and what would be best to improve their experience with the game, I decided to limit this scalability to a range of 2 to 20 and create a board with a maximum of 400 positions.
+This application is designed to be scalable. This means that users can create very large boards with this application (I manually test a board with a 1000x1000 grid). Such a big board requires a gigantic screen to be displayed correctly. Thinking about the users and what would be best to improve their experience with the game, I decided to limit this scalability to a range of 2 to 20 and create a board with a maximum of 400 positions.
 
 ### - Personalised gameplay experience with configured player names
 
-The application allows the user to personalize the game with their player name. This configuration is done only once and is recorded on the hard disk of the computer. So every time the player starts a new game, the application refers to the user by name.
+The application allows players to personalise the game with their names. This configuration only needs to be completed once and is recorded on the hard disk of the computer. Every time the player runs a new session of the application, the application will refer to the players by their configured names.
 
 However, if the player decides not to make any changes, the game will still be able to differentiate the users, using the default values: "Rick" for player 1 and "Morty" for player 2.
 
@@ -186,7 +188,7 @@ For this example, we will visit the settings menu to make some changes, we enter
 This screen gives the user a menu of options depending on what they want to change.
 The menu shows the current values of each section that can be customized.
 
-For this example let's extend our board. We introduce option 1 and hit enter.
+For this example, let's extend our board. We introduce option 1 and hit enter.
 
 ![Game Settings Menu](./readme_img/game%20settings.png)
 
@@ -218,16 +220,16 @@ The program will give specific instructions to the user to enter the position to
 
 ![Game display](./readme_img/start_playgame.png)
 
-- Invalid input handaling
+- Invalid input handling
 
 The application is capable of handling invalid inputs by the player and prints different messages depending on each situation.
 
 An entry may be invalid for the following reasons:
 
-- Input is a non numeric character
-- Input is a number out of board range
-- No input
-- Input is occupying position on the board
+- Input is a non-numeric character
+- Input is a number outside of the range of board positions
+- Blank or no input
+- Inputted position is already occupied on the board
 
 The application will not continue the game until the player in turn enters a valid position, as shown in the following image.
 
@@ -235,7 +237,7 @@ The application will not continue the game until the player in turn enters a val
 
 - Check if there is a winner
 
-Like the classic tictactoe game, the player who first makes a continuous line with his mark ("X"/ "O") on the board wins. This continuous line can be vertical, horizontal, forward diagonal or backward diagonal.
+Like the classic tic-tac-toe game, the player who first makes a continuous line with his mark ("X"/ "O") on the board wins. This continuous line can be vertical, horizontal, forward diagonal or backward diagonal.
 
 As shown in the following images:
 
@@ -251,13 +253,13 @@ As shown in the following images:
 
 ![Forward diagonal](./readme_img/forward_diagonal_win.png)
 
-- Rick wins with a backward diagonal
+- Rick wins with a backward diagonal line
 
 ![Backward diagonal](./readme_img/backward_diagonal_win.png)
 
-- No winners
+- No winners / draw / stalemate
 
-If the available positions run out the application ends the game, as shown below
+If no further valid moves can be made by either player, the application ends the game, as shown below
 
 ![Nobody wins](./readme_img/nobody_wins.png)
 
@@ -265,31 +267,62 @@ If the available positions run out the application ends the game, as shown below
 
 ### Control Flow Diagram
 
+![Gameplay Logic](./readme_img/Gameplay_logic.png)
+
 ### Implementation Plan (R7)
 
-Aqui va el Trello board
-Develop an implementation plan which:
+In order to execute this project in 2 weeks, I need to design a plan for the development and implementation of my Tic-Tac-To-Infinity application.
+I use the project management software Trello to track and record the activities carried out during the development and implementation of the application:
+The Original Plan was to develop and implement the following features in the following chronological order:
 
-- outlines how each feature will be implemented and a checklist of tasks for each feature
-- prioritise the implementation of different features, or checklist items within a feature
-- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
+![Implementation Plan](./readme_img/Implementation_Plan.png)
 
-Utilise a suitable project management platform to track this implementation plan.
+However, during the implementation of the game I realized that it was not possible to follow this plan and because of how intertwined the design of the application was.
+My main goal was to create an application that is scalable and easy to maintain. To achieve this goal I used the Agile methodology, which allowed me to iterate each of my functions and improve them at each planning stage (when a new feature was added).
 
-Provide screenshots/images and/or a reference to an accessible project management platform used to track this implementation plan.
+I removed features that didn't add value to my app, and added new features to the game to make it scalable, interactive, and easy to use.
 
-> Your checklists for each feature should have at least 5 items.
+Below are the screenshots of the Trello Application the tasks developed on different dates.
+
+- April 26, 2023
+
+![Implementation Plan- April 26, 2023](./readme_img/26%3A04%3A2023.png)
+
+- April 27, 2023
+
+![Implementation Plan - April 27, 2023](./readme_img/27%3A04%3A2023.png)
+
+- April 28, 2023
+
+![Implementation Plan - April 28, 2023](./readme_img/28%3A04%3A2023.png)
+
+- April 29, 2023
+
+![Implementation Plan - April 29, 2023](./readme_img/29%3A04%3A2023.png)
+
+- April 30, 2023
+
+![Implementation Plan - April 30, 2023](./readme_img/29%3A04%3A2023.png)
+
+- May 01, 2023
+  ![Implementation Plan - May 01, 2023, 2023](./readme_img/01%3A05%3A2023_Testing.png)
+
+- May 02, 2023
+
+![Implementation Plan - May 02, 2023, 2023](./readme_img/02%3A05%3A2023.png)
+
+- May 03, 2023
+
+![Implementation Plan - May 03, 2023, 2023](./readme_img/03%3A05%3A2023.png)
+
+- May 04, 2023
+
+![Implementation Plan - May 04, 2023, 2023](./readme_img/04%3A05%3A2023.png)
+
+- May 05- 06, 2023
+  ![Implementation Plan - May 05, 2023, 2023](./readme_img/05-06%3A05%3A2023.png)
 
 ## Testing (R15)
-
-
-
-
-
-
-
-
-
 
 ### How to run automated tests
 
