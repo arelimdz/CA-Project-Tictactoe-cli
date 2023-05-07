@@ -19,7 +19,6 @@ all_offsets = [
 def has_player_won(board, move, current_marker, target) -> bool:
     for offsets in all_offsets:
         left_offset, right_offset = offsets
-        # print(left_offset, right_offset)
         if is_winning_move(
             board,
             move,
