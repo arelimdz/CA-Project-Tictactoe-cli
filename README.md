@@ -4,13 +4,6 @@ A terminal Application of the classic Tic-Tac-Toe game with a great twist.
 
 Created by Areli Mendoza Perez for a Project with Coder Academy.
 
-## Link to Source Control Repository (R4)
-
-[Tic-tac-to-Infinity GitHub Repository](https://github.com/arelimdz/tictactoe-cli)
-
-## Code Style Guide used (R5)
-
-This code is formatter by Black and the resulting code style is compliant with PEP 8.
 
 ## Instruction and Help
 
@@ -40,7 +33,7 @@ To install the latest version of Python 3 visit the following page:
 2. pytest (for testing)
 3. pytest-cov (for reporting code coverage)
 
-### How to install application (R8)
+### How to install application
 
 To run the application on the user's computer follow the next steps:
 
@@ -81,7 +74,7 @@ Tic-Tac-Infinity is the classic Tic-Tac-Toe game with two unique additions:
 
 It continues to maintain the essence of the classic game that we all know. It requires two people to be played. It consists of alternately each one of the players makes a move in one of the available grids, trying to be the first to mark three consecutive grids with their mark.
 
-## Application Features (R6)
+## Application Features 
 
 ### - Player vs Player Tic Tac Toe gameplay
 
@@ -263,66 +256,12 @@ If no further valid moves can be made by either player, the application ends the
 
 ![Nobody wins](./readme_img/nobody_wins.png)
 
-## Software Development Plan
 
 ### Control Flow Diagram
 
 ![Gameplay Logic](./readme_img/Gameplay_logic.png)
 
-### Implementation Plan (R7)
-
-In order to execute this project in 2 weeks, I need to design a plan for the development and implementation of my Tic-Tac-To-Infinity application.
-I use the project management software Trello to track and record the activities carried out during the development and implementation of the application:
-The Original Plan was to develop and implement the following features in the following chronological order:
-
-![Implementation Plan](./readme_img/Implementation_Plan.png)
-
-However, during the implementation of the game I realized that it was not possible to follow this plan and because of how intertwined the design of the application was.
-My main goal was to create an application that is scalable and easy to maintain. To achieve this goal I used the Agile methodology, which allowed me to iterate each of my functions and improve them at each planning stage (when a new feature was added).
-
-I removed features that didn't add value to my app, and added new features to the game to make it scalable, interactive, and easy to use.
-
-Below are the screenshots of the Trello Application the tasks developed on different dates.
-
-- April 26, 2023
-
-![Implementation Plan- April 26, 2023](./readme_img/26%3A04%3A2023.png)
-
-- April 27, 2023
-
-![Implementation Plan - April 27, 2023](./readme_img/27%3A04%3A2023.png)
-
-- April 28, 2023
-
-![Implementation Plan - April 28, 2023](./readme_img/28%3A04%3A2023.png)
-
-- April 29, 2023
-
-![Implementation Plan - April 29, 2023](./readme_img/29%3A04%3A2023.png)
-
-- April 30, 2023
-
-![Implementation Plan - April 30, 2023](./readme_img/29%3A04%3A2023.png)
-
-- May 01, 2023
-  ![Implementation Plan - May 01, 2023, 2023](./readme_img/01%3A05%3A2023_Testing.png)
-
-- May 02, 2023
-
-![Implementation Plan - May 02, 2023, 2023](./readme_img/02%3A05%3A2023.png)
-
-- May 03, 2023
-
-![Implementation Plan - May 03, 2023, 2023](./readme_img/03%3A05%3A2023.png)
-
-- May 04, 2023
-
-![Implementation Plan - May 04, 2023, 2023](./readme_img/04%3A05%3A2023.png)
-
-- May 05- 06, 2023
-  ![Implementation Plan - May 05, 2023, 2023](./readme_img/05-06%3A05%3A2023.png)
-
-## Testing (R15)
+## Testing
 
 ### How to run automated tests
 

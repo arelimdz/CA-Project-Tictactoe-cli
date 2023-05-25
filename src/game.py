@@ -63,7 +63,6 @@ def main_game_loop(num_rows, num_columns, target, player_1, player_2) -> str:
             print(
                 f"\nCongratulations {players[current_marker_index]}!!! \n\nYou are the WINNER\n"
             )
-            is_game_over = True
             break
 
         # Check if board has any empty space
